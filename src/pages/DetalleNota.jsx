@@ -21,7 +21,7 @@ function DetalleNota() {
   const manejarEliminacion = () => {
     if (window.confirm(`¿Estás seguro de eliminar la nota "${nota.titulo}"?`)) {
       eliminarNota(nota.id);
-      navigate('/notas'); // Redirección tras eliminar
+      navigate('/notas'); 
     }
   };
 

@@ -4,7 +4,7 @@ import Modal from './Modal';
 import Alerta from './Alerta';
 
 function ListaContactos() {
-  // Estado inicial con 5 contactos
+
   const [contactos, setContactos] = useState([
     { id: 1, nombre: "Juan Pérez", telefono: "555-0101", favorito: true },
     { id: 2, nombre: "María López", telefono: "555-0202", favorito: false },
@@ -13,19 +13,19 @@ function ListaContactos() {
     { id: 5, nombre: "Luis Martínez", telefono: "555-0505", favorito: false }
   ]);
 
-  // Estados independientes de búsqueda, filtro de favoritos y eliminación
+
   const [nuevoBusqueda, setNuevoBusqueda] = useState('');
   const [mostrarSoloFavoritos, setMostrarSoloFavoritos] = useState(false);
   const [contactoAEliminar, setContactoAEliminar] = useState(null);
 
-  // Alternar favorito inmutablemente con .map()
+
   const toggleFavorito = (id) => {
     setContactos((prev) =>
       prev.map((c) => (c.id === id ? { ...c, favorito: !c.favorito } : c))
     );
   };
 
-  // Eliminar contacto inmutablemente con .filter()
+
   const ejecutarEliminacion = () => {
     if (contactoAEliminar) {
       setContactos((prev) => prev.filter((c) => c.id !== contactoAEliminar.id));
@@ -33,7 +33,7 @@ function ListaContactos() {
     }
   };
 
-  // Filtrado en tiempo real sin modificar el array original
+
   const contactosFiltrados = contactos.filter((c) => {
     const coincideBusqueda =
       c.nombre.toLowerCase().includes(nuevoBusqueda.toLowerCase()) ||
@@ -49,12 +49,12 @@ function ListaContactos() {
     <div style={{ border: '1px solid #ccc', padding: '15px', borderRadius: '6px', margin: '10px 0' }}>
       <h3>Lista de Contactos</h3>
 
-      {/* Contadores superiores */}
+
       <div style={{ marginBottom: '10px', fontSize: '0.9em', color: '#555' }}>
         Favoritos: {totalFavoritos} / {contactos.length} | Resultados: {contactosFiltrados.length}
       </div>
 
-      {/* Controles de Búsqueda y Filtro */}
+
       <div style={{ display: 'flex', gap: '10px', marginBottom: '15px', flexWrap: 'wrap' }}>
         <input
           type="text"
@@ -70,13 +70,13 @@ function ListaContactos() {
         />
       </div>
 
-      {/* Alerta si la lista filtrada está vacía */}
+
       {contactosFiltrados.length === 0 ? (
         <Alerta tipo="info" titulo="Sin resultados">
           No se encontraron contactos
         </Alerta>
       ) : (
-        /* Renderizado de lista */
+
         <ul style={{ listStyle: 'none', padding: 0 }}>
           {contactosFiltrados.map((contacto) => (
             <li
@@ -109,7 +109,7 @@ function ListaContactos() {
         </ul>
       )}
 
-      {/* Modal de confirmación reusado */}
+
       <Modal
         titulo="Confirmación de Eliminación"
         abierto={Boolean(contactoAEliminar)}

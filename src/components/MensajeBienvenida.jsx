@@ -1,6 +1,6 @@
 function MensajeBienvenida() {
    
-    const usuario = { nombre: "Carlos", rol: "admin" };
+    const usuario = { nombre: "Cristian", rol: "admin" };
     
    
     if (usuario === null) {

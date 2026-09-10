@@ -19,13 +19,13 @@ function TemporizadorPomodoro() {
       alert("¡El tiempo del Pomodoro ha finalizado!");
     }
 
-    // Funcion de limpieza: se ejecuta al pausar, reiniciar o desmontar el componente[cite: 2]
+    
     return () => {
       if (intervalo) clearInterval(intervalo);
     };
   }, [activo, segundos]);
 
-  // Formateador de segundos a formato MM:SS[cite: 2]
+  
   const formatearTiempo = (totalSegundos) => {
     const minutos = Math.floor(totalSegundos / 60);
     const segs = totalSegundos % 60;
@@ -43,12 +43,12 @@ function TemporizadorPomodoro() {
     <div style={{ border: '1px solid #ccc', padding: '15px', borderRadius: '6px', margin: '10px 0', textAlign: 'center' }}>
       <h3>Temporizador Pomodoro</h3>
 
-      {/* Despliegue de tiempo en formato MM:SS[cite: 2] */}
+
       <div style={{ fontSize: '2.5em', fontWeight: 'bold', margin: '15px 0', fontFamily: 'monospace' }}>
         {formatearTiempo(segundos)}
       </div>
 
-      {/* Botones de control[cite: 2] */}
+
       <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
         <button 
           onClick={iniciar} 

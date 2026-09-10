@@ -1,5 +1,5 @@
 function BotonAccion({ texto, variante = 'primario', disabled = false, onClick }) {
-  // Estilos dinámicos según la variante ('primario', 'secundario', 'peligro')
+  
   const estilosVariante = {
     primario: { backgroundColor: '#007bff', color: '#fff' },
     secundario: { backgroundColor: '#6c757d', color: '#fff' },

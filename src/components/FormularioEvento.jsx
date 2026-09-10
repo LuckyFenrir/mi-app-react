@@ -3,7 +3,7 @@ import BotonAccion from './BotonAccion';
 import Alerta from './Alerta';
 
 function FormularioEvento() {
-  // Estado principal del formulario (objeto)
+  
   const [formulario, setFormulario] = useState({
     titulo: '',
     fecha: '',
@@ -12,16 +12,15 @@ function FormularioEvento() {
     esPublico: false
   });
 
-  // Estado separado para los errores de validación
+  
   const [errores, setErrores] = useState({});
 
-  // Estado booleano para el mensaje de confirmación de éxito
+  
   const [mensajeExito, setMensajeExito] = useState(null);
 
-  // Estado array para almacenar todos los eventos registrados
   const [eventosRegistrados, setEventosRegistrados] = useState([]);
 
-  // Única función handleChange con operador spread
+  
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormulario((prev) => ({
@@ -30,7 +29,7 @@ function FormularioEvento() {
     }));
   };
 
-  // Función de validación
+  
   const validar = () => {
     const nuevosErrores = {};
 
@@ -59,20 +58,20 @@ function FormularioEvento() {
     return Object.keys(nuevosErrores).length === 0;
   };
 
-  // Manejador del envío
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (validar()) {
       const nuevoEvento = { ...formulario, id: Date.now() };
 
-      // Actualización inmutable del array de eventos
+  
       setEventosRegistrados((prev) => [...prev, nuevoEvento]);
 
-      // Guardar datos para el mensaje de éxito
+  
       setMensajeExito(nuevoEvento);
 
-      // Limpiar formulario y errores
+  
       setFormulario({
         titulo: '',
         fecha: '',
@@ -82,14 +81,14 @@ function FormularioEvento() {
       });
       setErrores({});
 
-      // Ocultar mensaje automáticamente tras 4 segundos
+  
       setTimeout(() => {
         setMensajeExito(null);
       }, 4000);
     }
   };
 
-  // Verificar si algún campo obligatorio está vacío para deshabilitar el botón
+  
   const botonDeshabilitado =
     !formulario.titulo ||
     !formulario.fecha ||
@@ -100,7 +99,7 @@ function FormularioEvento() {
     <div style={{ border: '1px solid #ccc', padding: '15px', borderRadius: '6px', margin: '10px 0' }}>
       <h3>Registro de Eventos</h3>
 
-      {/* Alerta de éxito temporizada */}
+  
       {mensajeExito && (
         <Alerta tipo="exito" titulo="¡Evento Registrado!">
           <p><strong>Título:</strong> {mensajeExito.titulo}</p>
@@ -128,7 +127,7 @@ function FormularioEvento() {
           )}
         </div>
 
-        {/* Campo Fecha */}
+  
         <div>
           <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '5px' }}>Fecha:</label>
           <input
@@ -145,7 +144,7 @@ function FormularioEvento() {
           )}
         </div>
 
-        {/* Campo Categoría */}
+  
         <div>
           <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '5px' }}>Categoría:</label>
           <select
@@ -167,7 +166,7 @@ function FormularioEvento() {
           )}
         </div>
 
-        {/* Campo Descripción */}
+  
         <div>
           <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '5px' }}>Descripción:</label>
           <textarea
@@ -185,7 +184,7 @@ function FormularioEvento() {
           )}
         </div>
 
-        {/* Campo Es Público (Checkbox) */}
+  
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <input
             type="checkbox"
@@ -197,7 +196,6 @@ function FormularioEvento() {
           <label htmlFor="esPublico" style={{ fontWeight: 'bold' }}>¿Es un evento público?</label>
         </div>
 
-        {/* Botón de envío utilizando BotonAccion */}
         <div>
           <BotonAccion
             texto="Registrar Evento"
@@ -210,7 +208,7 @@ function FormularioEvento() {
 
       <hr style={{ margin: '20px 0' }} />
 
-      {/* Lista de eventos registrados durante la sesión */}
+
       <h4>Eventos Registrados ({eventosRegistrados.length})</h4>
       {eventosRegistrados.length === 0 ? (
         <p style={{ color: '#666', fontStyle: 'italic' }}>No hay eventos registrados en esta sesión.</p>

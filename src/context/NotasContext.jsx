@@ -49,7 +49,7 @@ function notasReducer(state, action) {
 }
 
 export function NotasProvider({ children }) {
-  // Persistencia con useLocalStorage
+  
   const [notasAlmacenadas, setNotasAlmacenadas] = useLocalStorage('mis-notas-app', initialStateInicial);
 
   const [state, dispatch] = useReducer(notasReducer, {
@@ -58,10 +58,10 @@ export function NotasProvider({ children }) {
     busqueda: ''
   });
 
-  // Notificaciones Toast con useNotificacion
+  
   const { notificacion, mostrar, cerrar } = useNotificacion(3000);
 
-  // Sincronizar cambios del reducer con localStorage
+  
   useEffect(() => {
     setNotasAlmacenadas(state.notas);
   }, [state.notas, setNotasAlmacenadas]);

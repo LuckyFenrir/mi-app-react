@@ -28,7 +28,7 @@ function Layout() {
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif', maxWidth: '900px', margin: '0 auto', padding: '20px', position: 'relative' }}>
       
-      {/* Toast de Notificación Global */}
+      
       {notificacion && (
         <div style={{
           position: 'fixed',

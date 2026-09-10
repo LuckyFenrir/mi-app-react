@@ -1,8 +1,8 @@
 function Dashboard() {
-    // 1. Datos requeridos
+    
     const usuario = {
-      nombre: "Carlos Pérez",
-      email: "carlos@example.com",
+      nombre: "Cristian Pérez",
+      email: "cristian@gmail.com",
       rol: "Administrador"
     };
   

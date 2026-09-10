@@ -12,7 +12,7 @@ function PruebaHooks() {
     <div style={{ border: '1px solid #ccc', padding: '15px', borderRadius: '6px', margin: '10px 0' }}>
       <h3>Prueba de Custom Hooks</h3>
 
-      {/* Renderizado de Notificación Temporal */}
+      
       {notificacion && (
         <div style={{ 
           padding: '10px 15px', 
@@ -28,7 +28,7 @@ function PruebaHooks() {
         </div>
       )}
 
-      {/* Control de Nombre con Persistencia */}
+      
       <div style={{ marginBottom: '15px' }}>
         <label style={{ display: 'block', marginBottom: '5px' }}>Nombre (persisitido en hook):</label>
         <input 
@@ -39,7 +39,7 @@ function PruebaHooks() {
         />
       </div>
 
-      {/* Disparadores de Notificación */}
+      
       <div style={{ display: 'flex', gap: '10px' }}>
         <button 
           onClick={() => mostrar('¡Acción completada con éxito!', 'exito')}

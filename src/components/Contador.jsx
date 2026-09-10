@@ -5,7 +5,7 @@ import Alerta from './Alerta';
 function Contador() {
   const [valor, setValor] = useState(0);
 
-  // Actualizaciones utilizando la forma funcional del setter
+
   const decrementar = () => setValor((prev) => prev - 1);
   const incrementar = () => setValor((prev) => prev + 1);
   const incrementarCinco = () => setValor((prev) => prev + 5);
@@ -39,7 +39,7 @@ function Contador() {
         />
       </div>
 
-      {/* Condicionales de Alerta según las reglas del laboratorio */}
+     
       {valor === 0 && (
         <Alerta tipo="info" titulo="Estado del contador">
           El contador está en cero

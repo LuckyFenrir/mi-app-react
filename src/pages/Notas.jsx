@@ -4,7 +4,7 @@ import { useNotas } from '../context/NotasContext';
 function Notas() {
   const { notas, filtroCategoria, busqueda, cambiarFiltro, cambiarBusqueda, toggleFijada } = useNotas();
 
-  // Filtrado simultáneo por categoría y texto de búsqueda (sin distinguir mayúsculas)
+  
   const notasFiltradas = notas.filter(nota => {
     const coincideFiltro = filtroCategoria === 'todas' || nota.categoria === filtroCategoria;
     const textoBusqueda = busqueda.toLowerCase();
@@ -12,7 +12,7 @@ function Notas() {
     return coincideFiltro && coincideBusqueda;
   });
 
-  // Ordenar para que las notas fijadas aparezcan siempre al inicio
+  
   const notasOrdenadas = [...notasFiltradas].sort((a, b) => (b.fijada ? 1 : 0) - (a.fijada ? 1 : 0));
 
   const coloresBadge = {
@@ -26,7 +26,7 @@ function Notas() {
     <div>
       <h2>Mis Notas</h2>
 
-      {/* Controles de búsqueda y selector de categoría */}
+
       <div style={{ display: 'flex', gap: '15px', marginBottom: '20px', flexWrap: 'wrap' }}>
         <input
           type="text"

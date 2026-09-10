@@ -1,5 +1,5 @@
 function Alerta({ tipo = 'info', titulo, children }) {
-  // Diccionario de configuración visual según el tipo
+
   const estilos = {
     exito: { bg: '#d4edda', color: '#155724', icono: '✅' },
     advertencia: { bg: '#fff3cd', color: '#856404', icono: '⚠️' },
@@ -7,7 +7,7 @@ function Alerta({ tipo = 'info', titulo, children }) {
     info: { bg: '#d1ecf1', color: '#0c5460', icono: 'ℹ️' }
   };
 
-  // Si envían un tipo no válido, cae por defecto en 'info'
+  
   const config = estilos[tipo] || estilos.info;
 
   return (
@@ -23,7 +23,7 @@ function Alerta({ tipo = 'info', titulo, children }) {
         <span style={{ marginRight: '8px' }}>{config.icono}</span>
         {titulo}
       </div>
-      {/* renderizado de la prop children */}
+      
       <div style={{ marginLeft: '28px' }}>
         {children}
       </div>

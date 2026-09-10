@@ -1,5 +1,5 @@
 function Modal({ titulo, abierto, children }) {
-  // Si está cerrado, retoma early return con null
+  
   if (!abierto) return null;
 
   return (

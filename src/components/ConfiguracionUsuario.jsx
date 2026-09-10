@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 function ConfiguracionUsuario() {
-  // Lectura inicial con try-catch para prevenir errores de JSON parse
+  
   const [config, setConfig] = useState(() => {
     try {
       const guardado = localStorage.getItem('config-usuario');
@@ -14,12 +14,12 @@ function ConfiguracionUsuario() {
     }
   });
 
-  // Guardar en localStorage ante cualquier cambio en el objeto 'config'
+  
   useEffect(() => {
     localStorage.setItem('config-usuario', JSON.stringify(config));
   }, [config]);
 
-  // Manejador inmutable de cambios del formulario
+  
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setConfig((prev) => ({
@@ -28,7 +28,7 @@ function ConfiguracionUsuario() {
     }));
   };
 
-  // Limpiar localStorage y restaurar estado inicial[cite: 2]
+  
   const restablecerValores = () => {
     localStorage.removeItem('config-usuario');
     setConfig({ nombre: '', tema: 'claro', notificaciones: true });
@@ -39,7 +39,7 @@ function ConfiguracionUsuario() {
       <h3>Configuración de Usuario</h3>
 
       <form style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
-        {/* Campo Nombre[cite: 2] */}
+        
         <div>
           <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px' }}>Nombre:</label>
           <input
@@ -51,7 +51,7 @@ function ConfiguracionUsuario() {
           />
         </div>
 
-        {/* Campo Tema[cite: 2] */}
+        
         <div>
           <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px' }}>Tema:</label>
           <select
@@ -65,7 +65,7 @@ function ConfiguracionUsuario() {
           </select>
         </div>
 
-        {/* Campo Notificaciones[cite: 2] */}
+        
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <input
             type="checkbox"
@@ -78,13 +78,13 @@ function ConfiguracionUsuario() {
         </div>
       </form>
 
-      {/* Vista previa en tiempo real[cite: 2] */}
+      
       <div style={{ backgroundColor: '#f8f9fa', padding: '10px', borderRadius: '4px', marginBottom: '15px' }}>
         <strong>Vista previa (JSON):</strong>
         <pre style={{ margin: '5px 0 0 0', fontSize: '0.85em' }}>{JSON.stringify(config, null, 2)}</pre>
       </div>
 
-      {/* Botón para restablecer[cite: 2] */}
+    
       <button 
         onClick={restablecerValores}
         style={{ padding: '8px 16px', backgroundColor: '#dc3545', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}

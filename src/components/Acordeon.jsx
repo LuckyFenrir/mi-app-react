@@ -1,4 +1,4 @@
-// src/components/Acordeon.jsx (Ajuste rápido)
+
 import { useState } from 'react';
 
 function Acordeon({ titulo, abiertoInicial = false, children }) {
