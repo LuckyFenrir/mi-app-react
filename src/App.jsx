@@ -1,63 +1,38 @@
-import Perfil from "./components/Perfil";
-import Clima from "./components/Clima";
-import EstadoPedido from "./components/EstadoPedido";
-import MensajeBienvenida from "./components/MensajeBienvenida";
-import ListaHabilidades from "./components/ListaHabilidades";
-import ListaProductos from "./components/ListaProductos";
-import ListaTareas from "./components/ListaTareas";
-import Tarjeta from "./components/Tarjeta";
-import Dashboard from "./components/Dashboard";
+import { useState } from 'react';
+import Alerta from './components/Alerta';
+import Acordeon from './components/Acordeon';
+import BotonAccion from './components/BotonAccion';
+import Modal from './components/Modal';
+import Contador from './components/Contador';
 
 function App() {
+  // Estado para controlar la visibilidad del Modal
+  const [modalAbierto, setModalAbierto] = useState(false);
+
   return (
-    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px", fontFamily: "sans-serif" }}>
-      <h1>Laboratorio 4: Fundamentos de React</h1>
-      <p>Integración final de todos los componentes desarrollados.</p>
+    <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto', fontFamily: 'sans-serif' }}>
+      <h1>Laboratorio 3: Ejercicio 2</h1>
 
-      <section style={{ marginBottom: "30px" }}>
-        <h2>Ejercicio 1 — Perfil</h2>
-        <Perfil />
-      </section>
+      <h2>Prueba de Modal</h2>
+      <BotonAccion 
+        texto="Abrir Ventana Modal" 
+        variante="primario" 
+        onClick={() => setModalAbierto(true)} 
+      />
 
-      <section style={{ marginBottom: "30px" }}>
-        <h2>Ejercicio 2 — Clima</h2>
-        <Clima />
-      </section>
+      <Modal titulo="Confirmación de Acción" abierto={modalAbierto}>
+        <p>Este es el contenido dentro del modal utilizando la prop children.</p>
+        <BotonAccion 
+          texto="Cerrar Modal" 
+          variante="secundario" 
+          onClick={() => setModalAbierto(false)} 
+        />
+      </Modal>
 
-      <section style={{ marginBottom: "30px" }}>
-        <h2>Ejercicio 3 — Estado de Pedido</h2>
-        <EstadoPedido />
-      </section>
+      <hr style={{ margin: '30px 0' }} />
 
-      <section style={{ marginBottom: "30px" }}>
-        <h2>Ejercicio 4 — Mensaje de Bienvenida</h2>
-        <MensajeBienvenida />
-      </section>
-
-      <section style={{ marginBottom: "30px" }}>
-        <h2>Ejercicio 5 — Lista de Habilidades</h2>
-        <ListaHabilidades />
-      </section>
-
-      <section style={{ marginBottom: "30px" }}>
-        <h2>Ejercicio 6 — Lista de Productos</h2>
-        <ListaProductos />
-      </section>
-
-      <section style={{ marginBottom: "30px" }}>
-        <h2>Ejercicio 7 — Lista de Tareas</h2>
-        <ListaTareas />
-      </section>
-
-      <section style={{ marginBottom: "30px" }}>
-        <h2>Ejercicio 8 — Tarjeta Reutilizable</h2>
-        <Tarjeta />
-      </section>
-
-      <section style={{ marginBottom: "30px" }}>
-        <h2>Ejercicio 9 — Dashboard</h2>
-        <Dashboard />
-      </section>
+      <h2>Prueba de Contador</h2>
+      <Contador />
     </div>
   );
 }
