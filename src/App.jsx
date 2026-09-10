@@ -1,38 +1,37 @@
-import { useState } from 'react';
-import Alerta from './components/Alerta';
-import Acordeon from './components/Acordeon';
-import BotonAccion from './components/BotonAccion';
-import Modal from './components/Modal';
-import Contador from './components/Contador';
+import VisorDocumento from './components/VisorDocumento';
+import TemporizadorPomodoro from './components/TemporizadorPomodoro';
+import ConfiguracionUsuario from './components/ConfiguracionUsuario';
+import PruebaHooks from './components/PruebaHooks';
 
 function App() {
-  // Estado para controlar la visibilidad del Modal
-  const [modalAbierto, setModalAbierto] = useState(false);
-
   return (
-    <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto', fontFamily: 'sans-serif' }}>
-      <h1>Laboratorio 3: Ejercicio 2</h1>
+    <div style={{ maxWidth: '850px', margin: '0 auto', padding: '25px', fontFamily: 'system-ui, sans-serif' }}>
+      <header style={{ textAlign: 'center', marginBottom: '30px' }}>
+        <h1 style={{ color: '#1a252f', margin: '0 0 10px 0' }}>Laboratorio 4</h1>
+        <p style={{ color: '#666', fontSize: '1.1em', margin: 0 }}>
+          Efectos Secundarios, Persistencia y Custom Hooks en React
+        </p>
+      </header>
 
-      <h2>Prueba de Modal</h2>
-      <BotonAccion 
-        texto="Abrir Ventana Modal" 
-        variante="primario" 
-        onClick={() => setModalAbierto(true)} 
-      />
+      <section style={{ marginBottom: '30px' }}>
+        <h2>Ejercicio 1 — Sincronización con el DOM (Visor de Documento)</h2>
+        <VisorDocumento />
+      </section>
 
-      <Modal titulo="Confirmación de Acción" abierto={modalAbierto}>
-        <p>Este es el contenido dentro del modal utilizando la prop children.</p>
-        <BotonAccion 
-          texto="Cerrar Modal" 
-          variante="secundario" 
-          onClick={() => setModalAbierto(false)} 
-        />
-      </Modal>
+      <section style={{ marginBottom: '30px' }}>
+        <h2>Ejercicio 2 — Control de Intervalos (Temporizador Pomodoro)</h2>
+        <TemporizadorPomodoro />
+      </section>
 
-      <hr style={{ margin: '30px 0' }} />
+      <section style={{ marginBottom: '30px' }}>
+        <h2>Ejercicio 3 — Persistencia Manual con localStorage (Configuración)</h2>
+        <ConfiguracionUsuario />
+      </section>
 
-      <h2>Prueba de Contador</h2>
-      <Contador />
+      <section style={{ marginBottom: '30px' }}>
+        <h2>Ejercicio 4 — Extracción de Lógica en Custom Hooks</h2>
+        <PruebaHooks />
+      </section>
     </div>
   );
 }
