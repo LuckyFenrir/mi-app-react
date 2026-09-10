@@ -1,38 +1,29 @@
-import VisorDocumento from './components/VisorDocumento';
-import TemporizadorPomodoro from './components/TemporizadorPomodoro';
-import ConfiguracionUsuario from './components/ConfiguracionUsuario';
-import PruebaHooks from './components/PruebaHooks';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { NotasProvider } from './context/NotasContext';
+import Layout from './components/Layout';
+import Inicio from './pages/Inicio';
+import Notas from './pages/Notas';
+import NuevaNota from './pages/NuevaNota';
+import DetalleNota from './pages/DetalleNota';
+import EditarNota from './pages/EditarNota';
+import NoEncontrada from './pages/NoEncontrada';
 
 function App() {
   return (
-    <div style={{ maxWidth: '850px', margin: '0 auto', padding: '25px', fontFamily: 'system-ui, sans-serif' }}>
-      <header style={{ textAlign: 'center', marginBottom: '30px' }}>
-        <h1 style={{ color: '#1a252f', margin: '0 0 10px 0' }}>Laboratorio 4</h1>
-        <p style={{ color: '#666', fontSize: '1.1em', margin: 0 }}>
-          Efectos Secundarios, Persistencia y Custom Hooks en React
-        </p>
-      </header>
-
-      <section style={{ marginBottom: '30px' }}>
-        <h2>Ejercicio 1 — Sincronización con el DOM (Visor de Documento)</h2>
-        <VisorDocumento />
-      </section>
-
-      <section style={{ marginBottom: '30px' }}>
-        <h2>Ejercicio 2 — Control de Intervalos (Temporizador Pomodoro)</h2>
-        <TemporizadorPomodoro />
-      </section>
-
-      <section style={{ marginBottom: '30px' }}>
-        <h2>Ejercicio 3 — Persistencia Manual con localStorage (Configuración)</h2>
-        <ConfiguracionUsuario />
-      </section>
-
-      <section style={{ marginBottom: '30px' }}>
-        <h2>Ejercicio 4 — Extracción de Lógica en Custom Hooks</h2>
-        <PruebaHooks />
-      </section>
-    </div>
+    <NotasProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Inicio />} />
+            <Route path="notas" element={<Notas />} />
+            <Route path="notas/nueva" element={<NuevaNota />} />
+            <Route path="notas/:id" element={<DetalleNota />} />
+            <Route path="notas/:id/editar" element={<EditarNota />} />
+          </Route>
+          <Route path="*" element={<NoEncontrada />} />
+        </Routes>
+      </BrowserRouter>
+    </NotasProvider>
   );
 }
 
